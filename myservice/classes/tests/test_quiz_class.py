@@ -2,7 +2,7 @@ import unittest
 from myservice.classes.quiz import Quiz, Question, Answer, LostQuizError, NonExistingAnswerError
 
 
-class TestApp(unittest.TestCase):
+class TestQuiz(unittest.TestCase):
 
     def test1_isOpen(self):
         # given
@@ -23,6 +23,13 @@ class TestApp(unittest.TestCase):
         quiz = self.createDummyQuiz()
         # then
         self.assertRaises(NonExistingAnswerError, quiz.checkAnswer, "maronn")
+
+    def test4_question(self):
+        # given
+        quiz = self.createDummyQuiz()
+        quiz.isLost()
+        # then
+        self.assertEqual(quiz.getQuestion(),{'question': "What's the answer to all questions?", 'answers': [{'answer': '33'}, {'answer': '42'}, {'answer': '1'}]})
 
     def createDummyQuiz(self):
         json_data = {
