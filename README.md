@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/giobart/Bedrock-a-Millionaire/badge.svg?branch=master)](https://coveralls.io/github/giobart/Bedrock-a-Millionaire?branch=master)
 # Bedrock-a-Millionaire
 Bedrock-a-Millionaire is as RESTful service for Quiz-Based games
 
