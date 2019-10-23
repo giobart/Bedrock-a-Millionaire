@@ -1,6 +1,5 @@
 import unittest
 import json
-from flask import request, jsonify
 from myservice.app import app as tested_app
 
 

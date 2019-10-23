@@ -1,1 +1,8 @@
+setuptools
+Flask
+flask_profiler
+konfig
+swagger_parser
+Werkzeug
+PyYAML
 -e git+https://github.com/Runnerly/flakon.git#egg=flakon
