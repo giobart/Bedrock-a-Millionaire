@@ -804,3 +804,59 @@ class TestApp(unittest.TestCase):
             "total_questions": 3
         }
         )
+
+    def test3_quizNumberInvariant(self):  # allpolls
+        # given
+        app = tested_app.test_client()
+
+        # when
+        reply = app.post('/quizzes', data=self.dummyJsonQuiz(), content_type='application/json')
+        body = json.loads(str(reply.data, 'utf8'))
+        actualnumber = body['quiznumber']
+        app.delete('/quiz/0')
+
+        # then
+        reply = app.post('/quizzes', data=self.dummyJsonQuiz(), content_type='application/json')
+        body = json.loads(str(reply.data, 'utf8'))
+        self.assertEqual(body['quiznumber'], actualnumber+1)
+
+
+    def dummyJsonQuiz(self):
+        return json.dumps({
+            "questions": [
+                {
+                    "question": "What's the answer to all questions?",
+                    "answers": [
+                        {
+                            "answer": "33",
+                            "correct": 0
+                        },
+                        {
+                            "answer": "42",
+                            "correct": 1
+                        },
+                        {
+                            "answer": "1",
+                            "correct": 0
+                        }
+                    ]
+                },
+                {
+                    "question": "What's the answer to all questions?",
+                    "answers": [
+                        {
+                            "answer": "33",
+                            "correct": 0
+                        },
+                        {
+                            "answer": "42",
+                            "correct": 1
+                        },
+                        {
+                            "answer": "1",
+                            "correct": 0
+                        }
+                    ]
+                }
+            ]
+        })
