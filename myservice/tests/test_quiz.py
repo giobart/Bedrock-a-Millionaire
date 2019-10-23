@@ -811,8 +811,7 @@ class TestApp(unittest.TestCase):
 
         # when
         reply = app.post('/quizzes', data=self.dummyJsonQuiz(), content_type='application/json')
-        body = json.loads(str(reply.data, 'utf8'))
-        actualnumber = body['quiznumber']
+        actualnumber = json.loads(str(reply.data, 'utf8'))['quiznumber']
         app.delete('/quiz/0')
 
         # then

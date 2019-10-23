@@ -10,19 +10,19 @@ class TestApp(unittest.TestCase):
         # then
         quiz.isOpen()
 
-    def test1_NonExistingAnswer(self):
-        # given
-        quiz = self.createDummyQuiz()
-        # then
-        self.assertRaises(NonExistingAnswerError, quiz.checkAnswer, "maronn")
-
-    def test1_isOpen_fail(self):
+    def test2_isOpen_fail(self):
         # given
         quiz = self.createDummyQuiz()
         # when
         self.assertRaises(LostQuizError, quiz.checkAnswer, "33")
         # then
         self.assertRaises(LostQuizError, quiz.isOpen)
+
+    def test3_NonExistingAnswer(self):
+        # given
+        quiz = self.createDummyQuiz()
+        # then
+        self.assertRaises(NonExistingAnswerError, quiz.checkAnswer, "maronn")
 
     def createDummyQuiz(self):
         json_data = {
